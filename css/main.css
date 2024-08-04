@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 50vh;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* justify-content: space-around; */
+    padding: 2rem;
+}
+
+/* section {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    width: 45%;
+} */
+
+.meme-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #f9f9f9;
+}
+
+.meme-editor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.canvas-container {
+    display: flex;
+    width: 50vw;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    /* width: 50vw; */
+}
+
+.gallery-img {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.gallery-img:hover {
+    border-color: #4CAF50;
+}
+
+.btn {
+    background: #4267b2;
+    border: 1px solid #4267b2;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0 5px;
+    user-select: none;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 3px;
+}
+
+@media (min-width: 600px) {
+    main {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    section {
+        width: 50%;
+        margin-bottom: 0;
+    }
+
+    .gallery-img {
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+}

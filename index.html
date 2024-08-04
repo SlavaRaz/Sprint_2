@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="onInit()">
+    <header>
+        <div class="logo">memegen</div>
+        <nav>
+            <a href="#">Gallery</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+    <main>
+        <section class="meme-gallery">
+            <!-- <h2>Gallery</h2> -->
+        </section>
+        <section class="meme-editor hidden">
+            <!-- <h2>Editor</h2> -->
+            <div class="canvas-container">
+                <canvas width="450" height="450" onclick="onCanvasClick(event)"> </canvas>
+            </div>
+            <div class="canvas-container-option">
+                <div class="text-controls">
+                    <input type="text" id="meme-text-input" placeholder="Enter meme text ">
+
+                    <a href="#" class="btn" onclick="downloadImg(this)" download="meme.png">Download meme</a>
+
+                    <label for="fillColor">Select fill color</label>
+                    <input onchange="onChangeFillColor()" type="color" id="fillColor" name="fill-color"
+                        value="#ffffff" />
+                    <button onclick="onIncreaseFontSize()">Increase Font</button>
+                    <button onclick="onDecreaseFontSize()">Decrease Font</button>
+                    <button onclick="onAddLine()">Add Line</button>
+                    <button onclick="OnSwitchLine()">Switch Line</button>
+                </div>
+                <div class="emoji-controls">
+                    <button id="prev-emoji">⬅️</button>
+                    <button class="emoji">🎁</button>
+                    <button class="emoji">🎩</button>
+                    <button class="emoji">👓</button>
+                    <button id="next-emoji">➡️</button>
+                </div>
+                <button id="share-button">Share</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p> memegen</p>
+        <p> All rights reserved 2024</p>
+    </footer>
+    <script src="js/service/memeService.js"></script>
+    <script src="js/service/galleryService.js"></script>
+    <script src="js/controller/memeController.js"></script>
+    <script src="js/controller/galleryController.js"></script>
+</body>
+
+</html>
