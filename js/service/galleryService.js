@@ -6,7 +6,9 @@ var gImgs = [
     { id: 2, url: 'img/2.jpg', keywords: ['dog', 'cute'] },
     { id: 2, url: 'img/2.jpg', keywords: ['dog', 'cute'] },
     { id: 2, url: 'img/2.jpg', keywords: ['dog', 'cute'] },
-    { id: 2, url: 'img/2.jpg', keywords: ['dog', 'cute'] }]
+    { id: 2, url: 'img/2.jpg', keywords: ['dog', 'cute'] },
+    
+]
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 

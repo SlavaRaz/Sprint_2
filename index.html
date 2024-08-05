@@ -16,6 +16,17 @@
             <a href="#">About</a>
         </nav>
     </header>
+    <div class="search-bar">
+        <input type="text" placeholder="Enter search keyword">
+        <div class="categories">
+            <a href="#" class="active">funny</a>
+            <a href="#">comics</a>
+            <a href="#">dogs</a>
+            <a href="#">drinks</a>
+            <a href="#">books</a>
+            <a href="#">more...</a>
+        </div>
+    </div>
     <main>
         <section class="meme-gallery">
             <!-- <h2>Gallery</h2> -->
@@ -28,16 +39,17 @@
             <div class="canvas-container-option">
                 <div class="text-controls">
                     <input type="text" id="meme-text-input" placeholder="Enter meme text ">
-
+                    <div class="buttons">
+                        <button onclick="onAddLine()">Add Line</button>
+                        <button onclick="OnSwitchLine()">Switch Line</button>
+                    </div>
                     <a href="#" class="btn" onclick="downloadImg(this)" download="meme.png">Download meme</a>
+                    <button onclick="onIncreaseFontSize()">Increase Font</button>
+                    <button onclick="onDecreaseFontSize()">Decrease Font</button>
 
                     <label for="fillColor">Select fill color</label>
                     <input onchange="onChangeFillColor()" type="color" id="fillColor" name="fill-color"
                         value="#ffffff" />
-                    <button onclick="onIncreaseFontSize()">Increase Font</button>
-                    <button onclick="onDecreaseFontSize()">Decrease Font</button>
-                    <button onclick="onAddLine()">Add Line</button>
-                    <button onclick="OnSwitchLine()">Switch Line</button>
                 </div>
                 <div class="emoji-controls">
                     <button id="prev-emoji">⬅️</button>
