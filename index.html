@@ -16,7 +16,7 @@
             <a href="#">About</a>
         </nav>
     </header>
-    <div class="search-bar">
+    <nav class="search-bar ">
         <input type="text" placeholder="Enter search keyword">
         <div class="categories">
             <a href="#" class="active">funny</a>
@@ -26,7 +26,7 @@
             <a href="#">books</a>
             <a href="#">more...</a>
         </div>
-    </div>
+    </nav>
     <main>
         <section class="meme-gallery">
             <!-- <h2>Gallery</h2> -->
@@ -43,22 +43,32 @@
                         <button onclick="onAddLine()">Add Line</button>
                         <button onclick="OnSwitchLine()">Switch Line</button>
                     </div>
-                    <a href="#" class="btn" onclick="downloadImg(this)" download="meme.png">Download meme</a>
-                    <button onclick="onIncreaseFontSize()">Increase Font</button>
-                    <button onclick="onDecreaseFontSize()">Decrease Font</button>
-
-                    <label for="fillColor">Select fill color</label>
-                    <input onchange="onChangeFillColor()" type="color" id="fillColor" name="fill-color"
+                    <div class="font-size-controls">
+                        <button onclick="onIncreaseFontSize()">A+</button>
+                        <button onclick="onDecreaseFontSize()">A-</button>
+                    </div>
+                    <select class="font-family-select" onchange="onChangeFontFamily(value)" >
+                        <option value="Impact">Impact</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                    <label for="fillColor">Select Fill Color</label>
+                    <input onchange="onChangeFillColor()" class ="fill-color" type="color" id="fillColor" name="fill-color"
                         value="#ffffff" />
+                    <div class="text-align-controls">
+                        <button onclick="onChangeTextAlign('left')">Left</button>
+                        <button onclick="onChangeTextAlign('center')">Center</button>
+                        <button onclick="onChangeTextAlign('right')">Right</button>
+                    </div>
+                    <button class="share-button" >Share</button>
+                    <a href="#" class="download-button" onclick="downloadImg(this)" download="meme.png">Download meme</a>
                 </div>
-                <div class="emoji-controls">
-                    <button id="prev-emoji">⬅️</button>
-                    <button class="emoji">🎁</button>
-                    <button class="emoji">🎩</button>
-                    <button class="emoji">👓</button>
-                    <button id="next-emoji">➡️</button>
+             
+                <!-- <div class="share-button"> -->
+                 
                 </div>
-                <button id="share-button">Share</button>
             </div>
         </section>
     </main>

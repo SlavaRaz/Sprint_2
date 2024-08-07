@@ -4,8 +4,7 @@ var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines:
-        [{ txt: 'I sometimes eat Falafel', size: 30, color: 'white', x: 0, y: 0, width: 0, height: 0 },
-        { txt: 'I love coding', size: 30, color: 'blue', y: '440' },
+        [{ txt:"", size: 30, color: '#rrggbb', fontFamily: 'Ariel', x: 0, y: 40 },
         ]
 }
 
@@ -38,9 +37,9 @@ function decreaseFontSize() {
 
 function addLine() {
     // Define a line height to space lines evenly
-    const lineHeight = 40
+    const lineHeight = 50
     const newY = gMeme.lines.length * lineHeight
-    const newLine = { txt: 'New Line', size: 20, color: 'black', y: newY }
+    const newLine = { txt: 'New Text', size: 20, color: 'black', x: 0, y: newY }
     gMeme.lines.push(newLine)
     // Set the new line as the selected line
     gMeme.selectedLineIdx = gMeme.lines.length - 1
@@ -52,6 +51,10 @@ function switchLine() {
 
 function setSelectedLineIdx(idx) {
     gMeme.selectedLineIdx = idx
+}
+
+function setFontFamily(font) {
+    gMeme.lines[gMeme.selectedLineIdx].fontFamily = font
 }
 
 

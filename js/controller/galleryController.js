@@ -24,5 +24,6 @@ function onImgSelect(imgId) {
 
 function switchToEditor() {
     document.querySelector('.meme-gallery').classList.add('hidden')
+    document.querySelector('.search-bar').classList.add('hidden')
     document.querySelector('.meme-editor').classList.remove('hidden')
 }

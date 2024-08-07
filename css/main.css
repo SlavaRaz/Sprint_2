@@ -6,7 +6,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /* min-height: 100vh; */
 }
 
 header {
@@ -16,6 +15,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+#font-family, #font-size, #text-align {
+    width: 150px;
 }
 
 header .logo {
@@ -30,10 +32,12 @@ header nav a {
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
+    display: grid;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
     background-color: #E0E0E0;
+    min-height: 60vh;
 }
 
 .search-bar {
@@ -64,13 +68,13 @@ main {
 }
 
 .categories a.active {
-    color: #FF6F00;
+    color: #4CAF50;
 }
 
 .meme-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 5px;
+    grid-template-columns: repeat(5, minmax(100px, 1fr));
+    gap: 15px;
     justify-items: center;
 }
 
@@ -91,15 +95,15 @@ img:hover {
 footer {
     background-color: #4CAF50;
     color: white;
-    padding: 1rem;
+    padding: 2rem;
     text-align: center;
     font-weight: bold;
 }
 
 .meme-editor {
     display: grid;
-    grid-template-columns: repeat(2, minmax(150px, 1fr));
-    /* gap: 5px; */
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    gap: 25px;
     justify-items: center;
 }
 
@@ -108,7 +112,6 @@ footer {
 }
 
 .canvas-container {
-    position: relative;
     background-color: #E0E0E0;
 }
 
@@ -116,8 +119,84 @@ footer {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
-
 }
+
+.canvas-container-option {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+}
+
+.canvas-container-option input[type="text"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #09e648;
+    border-radius: 25px;
+}
+
+.canvas-container-option .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.buttons button {
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.font-size-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.text-align-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.fill-color {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.download-button {
+    background: #4CAF50;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 3px;
+}
+
 
 
 /* @media (min-width: 600px) {
