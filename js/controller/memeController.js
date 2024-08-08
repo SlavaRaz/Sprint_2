@@ -10,6 +10,8 @@ function addListeners() {
         setLineTxt(event.target.value)
         renderMeme()
     })
+    document.getElementById('meme-canvas').addEventListener('click', onCanvasClick)
+
     updateControls()
     renderMeme()
     resizeCanvas()
@@ -29,15 +31,15 @@ function renderMeme() {
     img.src = selectedImg.url
     img.onload = () => {
         // Clear the canvas
-        gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+        // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
         // Draw the image on the canvas
-        gElCanvas.height = (img.width / img.height) * gElCanvas.width
+        gElCanvas.height = (img.height / img.width) * gElCanvas.width
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
         // Draw the text on top of the image
         meme.lines.forEach((line, idx) => {
             gCtx.font = `${line.size}px ${line.fontFamily}`
             gCtx.fillStyle = line.color
-            gCtx.textAlign = 'center'
+            gCtx.textAlign = line.textAlign
             // Calculate y to place the line on canvas and spaces between lines
             const y = line.y ? line.y : gElCanvas.height / (meme.lines.length + 1) * (idx + 1)
             gCtx.fillText(line.txt, gElCanvas.width / 2, y)
@@ -64,7 +66,7 @@ function renderMeme() {
 
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.clientWidth - 20
+    gElCanvas.width = elContainer.clientWidth - 10
     renderMeme()
 }
 
@@ -85,14 +87,11 @@ function onChangeFontFamily() {
     renderMeme()
 }
 
-// function onChangeTextAlign(textAlign) {
-//     const meme = getMeme()
-//     const selectedLine = meme.lines[meme.selectedLineIdx]
-//     if (selectedLine) {
-//         selectedLine.textAlign = textAlign
-//         renderMeme()
-//     }
-// }
+function onChangeTextAlign(textAlign) {
+    changeTextAlign(textAlign)
+    renderMeme()
+   
+}
 
 function onIncreaseFontSize() {
     increaseFontSize()
@@ -115,32 +114,68 @@ function OnSwitchLine() {
     renderMeme()
 }
 
+function OnMoveUp() {
+    moveLineUp()
+    renderMeme()
+}
+
+function onMoveDown() {
+    moveLineDown()
+    renderMeme()
+}
+
+function onDeleteLine() {
+    deleteLine()
+    updateControls()
+    renderMeme()
+}
+
 function updateControls() {
     const meme = getMeme()
     const selectedLine = meme.lines[meme.selectedLineIdx]
     if (selectedLine) {
         document.getElementById('meme-text-input').value = selectedLine.txt
         document.querySelector('input[name="fill-color"]').value = selectedLine.color
-        // document.querySelector('.font-family-select').value = 'Arial'
+        document.querySelector('.font-family-select').value = selectedLine.fontFamily
         document.querySelector('.font-size-controls').value = selectedLine.size
         document.querySelector('.text-align-controls').value = selectedLine.textAlign || 'center'
     }
 }
 
 function onCanvasClick(event) {
-    const canvas = document.querySelector('canvas')
-    const rect = canvas.getBoundingClientRect()
+    gElCanvas = document.querySelector('canvas')
+    gCtx = gElCanvas.getContext('2d')
+    const rect = gElCanvas.getBoundingClientRect()
     const x = event.clientX - rect.left
     const y = event.clientY - rect.top
 
     const meme = getMeme()
-    var lineFound = false
+    let lineFound = false
+
     meme.lines.forEach((line, idx) => {
-        if (x >= line.x && x <= line.x + line.width && y >= line.y && y <= line.y + line.height) {
+        const textWidth = getTextWidth(line.txt, line.size, line.fontFamily)
+        const textHeight = line.size
+
+        const textX = gElCanvas.width / 2 - textWidth / 2 
+        const textY = line.y - textHeight / 2
+
+        if (x >= textX && x <= textX + textWidth && y >= textY && y <= textY + textHeight) {
             setSelectedLineIdx(idx)
             updateControls()
             renderMeme()
             lineFound = true
         }
-    })
+    });
+
+    if (!lineFound) {
+        console.log('Clicked outside of text lines')
+    }
 }
+
+function getTextWidth(text, size, fontFamily) {
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
+    context.font = `${size}px ${fontFamily}`
+    return context.measureText(text).width
+}
+

@@ -27,3 +27,13 @@ function switchToEditor() {
     document.querySelector('.search-bar').classList.add('hidden')
     document.querySelector('.meme-editor').classList.remove('hidden')
 }
+
+function navigateTo(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('div[id]').forEach(function(section) {
+        section.style.display = 'none';
+    });
+
+    // Show the selected section
+    document.getElementById(sectionId).style.display = 'block';
+}

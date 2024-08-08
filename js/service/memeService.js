@@ -4,7 +4,7 @@ var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines:
-        [{ txt:"", size: 30, color: '#rrggbb', fontFamily: 'Ariel', x: 0, y: 40 },
+        [{ txt: "", size: 30, color: 'black', fontFamily: 'Ariel', textAlign: 'center', x: 0, y: 40 },
         ]
 }
 
@@ -56,5 +56,36 @@ function setSelectedLineIdx(idx) {
 function setFontFamily(font) {
     gMeme.lines[gMeme.selectedLineIdx].fontFamily = font
 }
+
+function moveLineUp() {
+    gMeme.lines[gMeme.selectedLineIdx].y -= 10
+}
+
+function moveLineDown() {
+    gMeme.lines[gMeme.selectedLineIdx].y += 10
+}
+
+function changeTextAlign(textAlign) {
+    const meme = getMeme()
+    const selectedLine = meme.lines[meme.selectedLineIdx]
+    if (selectedLine) {
+        selectedLine.textAlign = textAlign
+    }
+
+}
+
+function deleteLine() {
+    const meme = getMeme()
+    if (meme.lines.length > 1) {
+        meme.lines.splice(meme.selectedLineIdx, 1)
+        meme.selectedLineIdx = Math.max(0, meme.selectedLineIdx - 1)
+    } else {
+        meme.lines[0] = { txt: "", size: 30, color: 'black', fontFamily: 'Ariel', textAlign: 'center', x: 0, y: 40 }
+    }
+
+}
+
+
+
 
 

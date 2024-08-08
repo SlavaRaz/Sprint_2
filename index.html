@@ -12,19 +12,20 @@
     <header>
         <div class="logo">memegen</div>
         <nav>
-            <a href="#">Gallery</a>
-            <a href="#">About</a>
+            <a href="#gallery" onclick="navigateTo('gallery')">Gallery</a>
+            <a href="#about" onclick="navigateTo('about')">About</a>
         </nav>
     </header>
+
     <nav class="search-bar ">
-        <input type="text" placeholder="Enter search keyword">
+        <input class="search-keyword" type="text" placeholder="Enter search keyword">
         <div class="categories">
-            <a href="#" class="active">funny</a>
-            <a href="#">comics</a>
-            <a href="#">dogs</a>
-            <a href="#">drinks</a>
-            <a href="#">books</a>
-            <a href="#">more...</a>
+            <a href="#" class="active">Funny</a>
+            <a href="#">Comics</a>
+            <a href="#">Dogs</a>
+            <a href="#">Drinks</a>
+            <a href="#">Books</a>
+            <a href="#">More...</a>
         </div>
     </nav>
     <main>
@@ -34,41 +35,51 @@
         <section class="meme-editor hidden">
             <!-- <h2>Editor</h2> -->
             <div class="canvas-container">
-                <canvas width="450" height="450" onclick="onCanvasClick(event)"> </canvas>
+                <canvas id="meme-canvas" width="450" height="450" onclick="onCanvasClick(event)"> </canvas>
             </div>
             <div class="canvas-container-option">
-                <div class="text-controls">
-                    <input type="text" id="meme-text-input" placeholder="Enter meme text ">
-                    <div class="buttons">
-                        <button onclick="onAddLine()">Add Line</button>
-                        <button onclick="OnSwitchLine()">Switch Line</button>
-                    </div>
-                    <div class="font-size-controls">
-                        <button onclick="onIncreaseFontSize()">A+</button>
-                        <button onclick="onDecreaseFontSize()">A-</button>
-                    </div>
-                    <select class="font-family-select" onchange="onChangeFontFamily(value)" >
-                        <option value="Impact">Impact</option>
-                        <option value="Arial">Arial</option>
-                        <option value="Comic Sans MS">Comic Sans MS</option>
-                        <option value="Georgia">Georgia</option>
-                        <option value="Verdana">Verdana</option>
-                    </select>
-                    <label for="fillColor">Select Fill Color</label>
-                    <input onchange="onChangeFillColor()" class ="fill-color" type="color" id="fillColor" name="fill-color"
-                        value="#ffffff" />
-                    <div class="text-align-controls">
-                        <button onclick="onChangeTextAlign('left')">Left</button>
-                        <button onclick="onChangeTextAlign('center')">Center</button>
-                        <button onclick="onChangeTextAlign('right')">Right</button>
-                    </div>
-                    <button class="share-button" >Share</button>
-                    <a href="#" class="download-button" onclick="downloadImg(this)" download="meme.png">Download meme</a>
+                <input type="text" id="meme-text-input" placeholder="Enter meme text ">
+                <div class="buttons">
+                    <button class="material-symbols-outlined" onclick="OnMoveUp()">arrow_upward_alt</button>
+                    <button class="material-symbols-outlined" onclick="onMoveDown()">arrow_downward</button>
+                    <button class="material-symbols-outlined" onclick="onDeleteLine()">delete</button>
                 </div>
-             
+                <div class="buttons">
+                    <button class="material-symbols-outlined" onclick="onAddLine()">add</button>
+                    <button class="material-symbols-outlined" onclick="OnSwitchLine()">switch</button>
+                </div>
+                <div class="buttons font-size-controls">
+                    <button class="material-symbols-outlined" onclick="onIncreaseFontSize()">text_increase</button>
+                    <button class="material-symbols-outlined" onclick="onDecreaseFontSize()">text_decrease</button>
+                </div>
+                <label for="font-select">Choose a Font:</label>
+                <select class="font-family-select" onchange="onChangeFontFamily(value)">
+                    <option disabled selected value> -- select font -- </option>
+                    <option value="Impact" selected>Impact</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Verdana">Verdana</option>
+                </select>
+                <label for="color-select">Choose a Color:</label>
+                <label for="fillColor"></label>
+                <input onchange="onChangeFillColor()" class="fill-color" type="color" id="fillColor" name="fill-color"
+                    value="#ffffff" />
+                <div class="text-align-controls">
+                    <button class="material-symbols-outlined"
+                        onclick="onChangeTextAlign('left')">arrow_back_ios</button>
+                    <button class="material-symbols-outlined"
+                        onclick="onChangeTextAlign('center')">density_medium</button>
+                    <button class="material-symbols-outlined"
+                        onclick="onChangeTextAlign('right')">arrow_forward_ios</button>
+
+
+                    <button class="material-symbols-outlined" class="share-button">ios_share</button>
+                    <a href="#" class="material-symbols-outlined" class="download-button" onclick="downloadImg(this)"
+                        download="meme.png">download</a>
+                </div>
+
                 <!-- <div class="share-button"> -->
-                 
-                </div>
             </div>
         </section>
     </main>
@@ -76,6 +87,9 @@
         <p> memegen</p>
         <p> All rights reserved 2024</p>
     </footer>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="js/service/storageService.js"></script>
     <script src="js/service/memeService.js"></script>
     <script src="js/service/galleryService.js"></script>
     <script src="js/controller/memeController.js"></script>
