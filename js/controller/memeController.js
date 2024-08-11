@@ -204,7 +204,7 @@ function getTextWidth(text, size, fontFamily) {
 function navigateToGallery() {
     document.querySelector('.meme-gallery').classList.remove('hidden')
     document.querySelector('.meme-editor').classList.add('hidden')
-    document.querySelector('.search-bar').classList.add('hidden')
+    document.querySelector('.search-bar').classList.remove('hidden')
 }
 
 function onAddEmoji() {
