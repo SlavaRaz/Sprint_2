@@ -20,12 +20,14 @@ header {
 header .logo {
     font-size: 24px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 header nav a {
     color: white;
     text-decoration: none;
     margin-left: 25px;
+    border-bottom: 1px solid #ccc;
 }
 
 main {
@@ -84,6 +86,22 @@ main {
     display: block;
 }
 
+.random-meme-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+    font-size: 16px;
+}
+
+.random-meme-btn:hover {
+    background-color: #45a049;
+}
+
 img:hover {
     border-color: #4CAF50;
 }
@@ -108,7 +126,6 @@ footer {
 
 .canvas-container {
     margin: 10px auto;
-
     background-color: #E0E0E0;
 }
 
@@ -120,123 +137,207 @@ footer {
 .canvas-container-option {
     display: flex;
     flex-direction: column;
-    margin: 10px auto;
-    /* width: 40vw; */
+    margin: auto;
+    width: 30vw;
 }
 
-.canvas-container-option input[type="text"] {
+input[type="text"] {
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 1em;
     border: 1px solid #09e648;
     border-radius: 25px;
-    width: 130%;
-    height: 20%;
-}
-
-.canvas-container-option .buttons {
-
-    gap: 30px;
-    margin: 10px;
-    padding-left: 15px;
-    width: 250%;
-    height: 30%;
+    width: 100%;
+    display: block;
 
 }
 
 .buttons button {
-    padding: 10px;
-    border: none;
+    padding: 0.7rem;
     background-color: #4CAF50;
     color: white;
-    border-radius: 25px;
+    border-radius: 15px;
     cursor: pointer;
-    font-size: 36px;
+    font-size: 1.5em;
+    margin: 3px;
+    border: none;
+
 }
 
 .font-size-controls {
-    padding: 15px;
-    font-size: 36px;
-    gap: 10px;
+    font-size: 16px;
     margin-bottom: 10px;
+    margin-top: 0px;
+
 }
 
-button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.text-align-controls {
-    padding: 5px 10px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+.font-family-select {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 5px;
+    border: 1px solid #09e648;
+    border-radius: 15px;
+    width: 95%;
 }
 
 .fill-color {
-    margin: 10px auto;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 50%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border: 1px solid #09e648;
+    border-radius: 25px;
+    width: 95%;
+    height: 10%;
+}
+
+.emoji-select {
+    margin: 10px auto;
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #09e648;
     border-radius: 25px;
-    width: 100%;
-    height: 10%;
 }
 
-.font-family-select {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #09e648;
+.add-emoji {
+    padding: 10px 13px;
+    background-color: #4CAF50;
+    color: white;
     border-radius: 15px;
-    width: 100%;
-    height: 10%;
-}
-
-.download-button {
-    background: #4CAF50;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #fff;
     cursor: pointer;
-    font-family: Helvetica, Arial, sans-serif;
-    margin: 0 5px;
-    padding: 5px 10px;
-    text-decoration: none;
-    margin: 3px;
+    font-size: 13px;
+    margin: 5px;
+    border: none;
 }
 
+.download-align {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px;
+    text-align: center;
+}
 
+.share-align {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+}
 
-@media screen and (max-width: 900px) {
+a {
+    text-decoration: none;
+    user-select: none;
+    white-space: nowrap;
+
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 1rem;
+    }
+
     .meme-gallery {
-        grid-template-columns: repeat(3, 1fr)
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .meme-editor {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(250px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(1, 1fr);
     }
 
+    .canvas-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .canvas-container-option {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    canvas {
+        width: 100%;
+    }
+
+    input[type="text"],
+    .font-family-select,
+    .fill-color,
+    .emoji-select {
+        width: 100%;
+    }
+
+    .buttons,
+    .font-size-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* Medium screens (601px to 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .meme-gallery {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .buttons button,
+    .font-size-controls button,
+    .add-emoji,
+    .emoji-select,
+    .download-align,
+    .share-align {
+        padding: 10px;
+        font-size: 15px;
+        margin: 5px 0;
+        width: auto;
+        border-radius: 13px;
+    }
+
+    input[type="text"],
+    .font-family-select,
+    .fill-color {
+        width: 60%;
+    }
+    .share-align{
+        margin-bottom: 20px;
+    }
+
+    .buttons,
+    .emoji-select,
+    .font-size-controls {
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }
 
-@media screen and (max-width: 650px) {
+/* Large screens (min-width: 901px) */
+@media (min-width:901px) {
     .meme-gallery {
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .meme-editor {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .canvas-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .canvas-container-option {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    canvas {
+        max-width: 450px;
+    }
+
+    input[type="text"],
+    .font-family-select,
+    .fill-color {
+        width: 70%;
     }
 }

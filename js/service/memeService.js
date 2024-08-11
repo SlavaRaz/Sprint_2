@@ -27,6 +27,21 @@ function setLineSize(size) {
     gMeme.lines[gMeme.selectedLineIdx].size = size
 }
 
+function getClickedLineIdx(pos) {
+    const { x, y, textWidth, textHeight } = gMeme.lines[gMeme.selectedLineIdx]
+    return pos.x >= x && pos.x <= x + textWidth && pos.y >= y - textHeight && pos.y <= y
+}
+function textSize(textHeight, textWidth) {
+    gMeme.lines[gMeme.selectedLineIdx].textHeight = textHeight
+    gMeme.lines[gMeme.selectedLineIdx].textWidth = textWidth
+}
+
+function moveLine(dx, dy) {
+    const line = gMeme.lines[gMeme.selectedLineIdx]
+    line.x += dx
+    line.y += dy
+}
+
 function increaseFontSize() {
     gMeme.lines[gMeme.selectedLineIdx].size += 2
 }
@@ -37,9 +52,9 @@ function decreaseFontSize() {
 
 function addLine() {
     // Define a line height to space lines evenly
-    const lineHeight = 50
+    const lineHeight = 85
     const newY = gMeme.lines.length * lineHeight
-    const newLine = { txt: 'New Text', size: 20, color: 'black', x: 0, y: newY }
+    const newLine = { txt: "New text", size: 30, color: 'white', textAlign: 'center', fontFamily: 'Ariel', x: 0, y: newY }
     gMeme.lines.push(newLine)
     // Set the new line as the selected line
     gMeme.selectedLineIdx = gMeme.lines.length - 1
@@ -71,7 +86,6 @@ function changeTextAlign(textAlign) {
     if (selectedLine) {
         selectedLine.textAlign = textAlign
     }
-
 }
 
 function deleteLine() {
@@ -80,9 +94,34 @@ function deleteLine() {
         meme.lines.splice(meme.selectedLineIdx, 1)
         meme.selectedLineIdx = Math.max(0, meme.selectedLineIdx - 1)
     } else {
-        meme.lines[0] = { txt: "", size: 30, color: 'black', fontFamily: 'Ariel', textAlign: 'center', x: 0, y: 40 }
+        meme.lines[0] = { txt: "", size: 30, color: 'white', fontFamily: 'Ariel', textAlign: 'center', x: 0, y: 40 }
     }
+}
 
+function addEmoji(emoji) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = gMeme.lines[gMeme.selectedLineIdx].txt + emoji
+}
+
+function setImg(imgId) {
+    gMeme.selectedImgId = imgId
+    gMeme.selectedLineIdx = 0
+    gMeme.lines = []
+}
+
+function setLineTxt(text) {
+    if (!gMeme.lines.length) {
+        gMeme.lines.push({
+            txt: text,
+            size: 30,
+            color: 'white',
+            textAlign: 'center',
+            fontFamily: 'Impact',
+            x: 175,
+            y: 50
+        });
+    } else {
+        gMeme.lines[gMeme.selectedLineIdx].txt = text
+    }
 }
 
 
